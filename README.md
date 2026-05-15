@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SatuLangkah ✨
 
-## Getting Started
+> Fokus ke satu hal dulu.
 
-First, run the development server:
+SatuLangkah adalah aplikasi berbasis AI yang membantu pengguna membereskan kamar atau ruangan yang berantakan tanpa merasa kewalahan.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Pengguna cukup mengunggah foto ruangan, lalu AI akan memecah kekacauan tersebut menjadi langkah-langkah kecil yang sederhana dan lebih mudah dilakukan satu per satu.
+
+Website ini dirancang dengan pendekatan yang lembut, suportif, dan ramah untuk pengguna yang mudah terdistraksi, overwhelmed, burnout, atau kesulitan memulai tugas besar.
+
+---
+
+## 🌱 Tentang Project
+
+Banyak orang merasa sulit memulai ketika melihat kamar atau rumah yang terlalu berantakan.
+
+Alih-alih membantu, kondisi tersebut justru bisa menambah stres dan membuat pengguna semakin kehilangan fokus.
+
+SatuLangkah hadir untuk membantu pengguna:
+
+* Memulai tanpa tekanan
+* Fokus pada satu tugas kecil
+* Mengurangi rasa overwhelmed
+* Membangun momentum secara perlahan
+* Membereskan ruangan dengan lebih tenang
+
+Aplikasi ini sangat cocok untuk:
+
+* Pengguna dengan ADHD
+* Pengguna yang mudah terdistraksi
+* Pengguna yang sedang burnout
+* Pengguna yang kesulitan memulai tugas besar
+* Siapa saja yang ingin membereskan ruangan secara perlahan
+
+---
+
+## ✨ Fitur Utama
+
+### 📸 Upload Foto Ruangan
+
+Pengguna dapat mengunggah foto area yang berantakan.
+
+### ⚡ Energy Check-in
+
+Pengguna memilih kondisi energi saat ini:
+
+* Low → tugas sangat kecil
+* Normal → tugas moderat
+* High → tugas lebih banyak
+
+### 🤖 Analisis AI dengan Gemini
+
+AI menganalisis isi ruangan dan membuat langkah-langkah kecil berdasarkan:
+
+* pakaian
+* botol
+* sampah
+* meja berantakan
+* barang yang berserakan
+
+### 🎯 Fokus Satu Tugas
+
+Pengguna hanya melihat satu instruksi pada satu waktu agar tidak merasa kewalahan.
+
+### 📈 Progress Tracker
+
+Menampilkan progres langkah yang sudah diselesaikan.
+
+### 💙 Friendly & Calming UI
+
+Menggunakan desain lembut dan suportif agar pengguna merasa lebih nyaman.
+
+### 🔒 Privacy Friendly
+
+Foto pengguna tidak disimpan.
+
+---
+
+<!-- ## 🛠️ Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+
+### AI
+
+* Gemini API
+* @google/genai
+
+### Icons
+
+* Lucide React -->
+
+
+## 🤖 Cara Kerja AI
+
+1. Pengguna mengunggah foto ruangan
+2. Foto dikirim ke Gemini API
+3. AI menganalisis objek yang berantakan
+4. AI membuat langkah mikro berdasarkan energy level pengguna
+5. Langkah ditampilkan satu per satu
+
+Contoh output:
+
+```json
+[
+  "Ambil satu botol kosong",
+  "Buang botol itu ke tempat sampah",
+  "Kumpulkan pakaian di lantai",
+  "Letakkan pakaian ke keranjang"
+]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Design Philosophy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+SatuLangkah dibuat dengan prinsip:
 
-## Learn More
+* Tidak menghakimi pengguna
+* Tidak memaksa produktivitas ekstrem
+* Fokus pada progress kecil
+* Calm & soft interface
+* Mengurangi cognitive overload
+* Memberikan rasa aman dan nyaman
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ❤️ Motivation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> “Kamu tidak harus membereskan semuanya sekaligus.”
 
-## Deploy on Vercel
+SatuLangkah dibuat untuk membantu pengguna mengambil satu langkah kecil terlebih dahulu.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Karena terkadang, memulai adalah bagian yang paling sulit.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 👩‍💻 Creator
+
+Crafted with care by Arifah Nur Basyiroh Machi.
