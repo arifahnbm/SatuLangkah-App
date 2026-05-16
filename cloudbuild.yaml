@@ -13,13 +13,14 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'satulangkah' # <- Anda bisa mengganti ini dengan nama service yang Anda inginkan
+      - 'satulangkah'
       - '--image'
       - 'gcr.io/$PROJECT_ID/satulangkah'
       - '--region'
-      - 'asia-southeast2' # Lokasi server Jakarta
+      - 'asia-southeast2'
+      - '--port'
+      - '8080' # <- Menegaskan Cloud Run untuk menggunakan port 8080
       - '--allow-unauthenticated'
 
-# SCRIPT DI BAWAH INI ADALAH KUNCI UNTUK MENGHILANGKAN ERROR ANDA
 options:
   logging: CLOUD_LOGGING_ONLY
