@@ -1,11 +1,40 @@
-# Menggunakan server web Nginx versi ringan sebagai basis
-FROM nginx:alpine
+# 1. Tahap Dependency & Build
+FROM node:18-alpine AS base
 
-# Mengubah port default Nginx dari 80 ke 8080 agar sesuai dengan Cloud Run
-RUN sed -i 's/listen\(.*\)80;/listen 8080;/g' /etc/nginx/conf.d/default.conf
+# Install dependency hanya jika diperlukan
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
 
-# Menyalin seluruh file web Anda ke folder publik Nginx di server
-COPY . /usr/share/nginx/html
+# Rebuild source code hanya jika ada perubahan
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
 
-# Membuka jalur akses port 8080 untuk lalu lintas web Cloud Run
+# 2. Tahap Production Runner
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=8080
+ENV HOSTNAME="0.0.0.0"
+
+# Buat user system demi keamanan Cloud Run
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Salin hasil build standalone Next.js
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 8080
+
+# Jalankan server Next.js bawaan (bukan npm run start)
+CMD ["node", "server.js"]
