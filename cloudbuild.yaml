@@ -1,0 +1,25 @@
+steps:
+  # Langkah 1: Membangun image Docker dari Dockerfile Anda
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/satulangkah', '.']
+
+  # Langkah 2: Mengunggah image Docker ke Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/satulangkah']
+
+  # Langkah 3: Men-deploy hasil akhir ke Google Cloud Run
+  - name: 'gcr.io/://google.com'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'satulangkah' # <- Anda bisa mengganti ini dengan nama service yang Anda inginkan
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/satulangkah'
+      - '--region'
+      - 'asia-southeast2' # Lokasi server Jakarta
+      - '--allow-unauthenticated'
+
+# SCRIPT DI BAWAH INI ADALAH KUNCI UNTUK MENGHILANGKAN ERROR ANDA
+options:
+  logging: CLOUD_LOGGING_ONLY
