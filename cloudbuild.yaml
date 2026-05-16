@@ -8,7 +8,7 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/satulangkah']
 
   # Langkah 3: Men-deploy hasil akhir ke Google Cloud Run
-  - name: 'gcr.io/://google.com'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'gcloud'
     args:
       - 'run'
